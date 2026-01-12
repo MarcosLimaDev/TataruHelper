@@ -139,6 +139,12 @@ namespace FFXIVTataruHelper
             _Updater.RestartApp();
         }
 
+        private void AISettings_Click(object sender, RoutedEventArgs e)
+        {
+            var aiSettingsWin = new AppWindows.AISettingsWindow();
+            aiSettingsWin.Show();
+        }
+
         private void CheckUpdates_Click(object sender, RoutedEventArgs e)
         {
             UserStartedUpdateText.Text = (string)this.Resources["LookingForUpdates"];

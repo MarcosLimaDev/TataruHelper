@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Translation</RootNamespace>
     <AssemblyName>Translation</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -75,6 +75,7 @@
     <Compile Include="Papago\PapagoResponse.cs" />
     <Compile Include="Papago\PapagoTranslationRequest.cs" />
     <Compile Include="Papago\PapagoTranslator.cs" />
+    <Compile Include="OpenAI\OpenAiCompatibleTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringCipher.cs" />
     <Compile Include="TranslatedMsg.cs" />

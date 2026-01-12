@@ -12,7 +12,9 @@ using Translation.Deepl;
 using Translation.Papago;
 using Translation.Google;
 using Translation.Yandex;
+using Translation.Yandex;
 using Translation.Utils;
+using Translation.OpenAI;
 
 namespace Translation
 {
@@ -34,6 +36,8 @@ namespace Translation
         DeepLTranslator _DeepLTranslator;
 
         PapagoTranslator _PapagoTranslator;
+
+        OpenAiCompatibleTranslator _OpenAiTranslator;
 
         List<KeyValuePair<TranslationRequest, string>> transaltionCache;
         KeyValuePair<TranslationRequest, string> defaultCachedResult = default(KeyValuePair<TranslationRequest, string>);
@@ -66,6 +70,8 @@ namespace Translation
             _PapagoTranslator = new PapagoTranslator(_Logger);
 
             _BaiduTranslator = new BaiduTranslater(_Logger);
+
+            _OpenAiTranslator = new OpenAiCompatibleTranslator(_Logger);
 
             _LanguageDetector = new LanguageDetector(GlobalTranslationSettings.MaxSameLanguagePercent,
                 GlobalTranslationSettings.NTextCatLanguageModelsPath, _Logger);
@@ -171,6 +177,11 @@ namespace Translation
                         result = BaiduTranslate(inSentence, fromLangCode, toLangCode);
                         break;
                     }
+                case TranslationEngineName.OpenAI:
+                    {
+                        result = OpenAiTranslate(inSentence, fromLangCode, toLangCode);
+                        break;
+                    }
                 default:
                     {
                         result = String.Empty;
@@ -213,6 +224,10 @@ namespace Translation
 
                 tmpList = Helper.LoadJsonData<List<TranslatorLanguague>>(baiduTrPath, _Logger);
                 tmptranslationEngines.Add(new TranslationEngine(TranslationEngineName.Baidu, tmpList, 3));
+
+                // OpenAI supports "Auto" (or user implied) but for simplicity we reuse Google's list or a generic one. 
+                // For now, let's reuse Google's list as it's comprehensive enough for common languages.
+                tmptranslationEngines.Add(new TranslationEngine(TranslationEngineName.OpenAI, tmpList, 11)); // High priority if selected
 
                 tmptranslationEngines = tmptranslationEngines.OrderByDescending(x => x.Quality).ToList();
 
@@ -291,6 +306,11 @@ namespace Translation
             }
 
             return result;
+        }
+
+        private string OpenAiTranslate(string sentence, string inLang, string outLang)
+        {
+             return _OpenAiTranslator.Translate(sentence, inLang, outLang);
         }
 
         private string PreprocessSentence(string sentence)

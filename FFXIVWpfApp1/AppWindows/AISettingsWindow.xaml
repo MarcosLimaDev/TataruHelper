@@ -1,0 +1,39 @@
+<Window x:Class="FFXIVTataruHelper.AppWindows.AISettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FFXIVTataruHelper.AppWindows"
+        mc:Ignorable="d"
+        Title="AI Translation Settings" Height="250" Width="400"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="API Key:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="ApiKeyBox" Grid.Row="0" Grid.Column="1" Margin="0,5"/>
+
+        <Label Content="Endpoint:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox x:Name="EndpointBox" Grid.Row="1" Grid.Column="1" Margin="0,5"/>
+
+        <Label Content="Model Name:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox x:Name="ModelBox" Grid.Row="2" Grid.Column="1" Margin="0,5"/>
+        
+        <Label Content="(e.g., deepseek-chat, gpt-3.5-turbo)" Grid.Row="3" Grid.Column="1" FontSize="10" Foreground="Gray" VerticalAlignment="Top"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="SaveButton" Content="Save" Width="80" Height="25" Click="SaveButton_Click" Margin="5"/>
+            <Button x:Name="CancelButton" Content="Cancel" Width="80" Height="25" Click="CancelButton_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

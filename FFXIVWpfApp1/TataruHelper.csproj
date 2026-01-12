@@ -106,6 +106,9 @@
     <Compile Include="AppWindows\PatreonWin.xaml.cs">
       <DependentUpon>PatreonWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppWindows\AISettingsWindow.xaml.cs">
+      <DependentUpon>AISettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AsyncEvent.cs" />
     <Compile Include="TataruComponentModel\AsyncBindingList.cs" />
     <Compile Include="TataruComponentModel\AsyncListChangedEventHandler.cs" />
@@ -169,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppWindows\PatreonWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppWindows\AISettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

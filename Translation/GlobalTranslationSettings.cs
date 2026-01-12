@@ -5,7 +5,7 @@ using System;
 
 namespace Translation
 {
-    static class GlobalTranslationSettings
+    public static class GlobalTranslationSettings
     {
         public static int TranslationCacheSize = 10000;
 
@@ -32,5 +32,11 @@ namespace Translation
         public static string YandexUsersFile = "TranslationResources/YandexUsers.json";
 
         public static string YandexEncoderPath = "TranslationResources/YandexEncoder";
+
+        public static string OpenAI_ApiKey = "";
+        
+        public static string OpenAI_Endpoint = "https://api.deepseek.com/v1/chat/completions";
+        
+        public static string OpenAI_Model = "deepseek-chat";
     }
 }
